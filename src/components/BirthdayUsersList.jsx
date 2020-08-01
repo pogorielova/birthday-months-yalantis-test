@@ -13,7 +13,7 @@ function BirthdayUsersList(props) {
   }
 
   return (
-    <ul className="birthday-users-list" hidden={!props.visibility}>
+    <ul className="birthday-users-list">
       {props.birthdayUsers.sort(handleSort).map((user) => (
         <li className="user-item" key={user.id}>
           <div className="day-of-birth">{+user.dob.slice(8, 10)}</div>

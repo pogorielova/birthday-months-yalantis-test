@@ -1,81 +1,127 @@
 .app {
-display: flex;
-max-width: 410px;
-margin: auto;
-padding: 10px;
+  max-width: 1080px;
+  margin: auto;
+  padding: 2%;
 
   .months-container {
-    width: 120px;
+    display: grid;
+    position: relative;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto;
+    column-gap: 10px;
     list-style: none;
     padding-left: 0;
-    margin-right: 20px;
-  
+
     .month-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 5px 10px; 
-      border-radius: 6px;
-      margin-bottom: 6px;
+      position: relative;
+      z-index: 1;
+      height: 60px;
+      line-height: 60px;
+      padding: 5px 20px 5px 10px;
+      border-radius: 4px;
+      margin-bottom: 10px;
       background-color: #fff;
-      transition: all .2s;
+      transition: all .5s;
       cursor: pointer;
+      box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.08);
       font-weight: 800;
       font-size: 32px;
-  
+
       &:hover {
-        transform: translateX(8px);
+        transform: translateY(-2px);
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
+        z-index: 200;
+
+        .birthday-users-list {
+          display: block;
+          position: absolute;
+          top: 80%;
+          left: 5px;
+          z-index: 100;
+          right: 10px;
+          list-style: none;
+          background-color: #fff;
+          width: 210px;
+          border-radius: 6px;
+          padding: 15px 10px;
+          line-height: 1.5;
+          font-weight: 400;
+          box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.08), 0px 8px 18px rgba(0, 0, 0, 0.08);
+          -webkit-border-radius: 6px;
+          -moz-border-radius: 6px;
+          border-radius: 6px;
+
+          .user-item {
+            display: flex;
+            align-items: center;
+
+            .day-of-birth {
+              width: 14px;
+              font-size: 15px;
+              color: #BDBDBD;
+              margin-right: 10px;
+            }
+
+            .user-name {
+              font-size: 18px;
+            }
+          }
+        }
       }
-  
+
+      .birthday-users-list {
+        display: none;
+      }
+
       .color-marker {
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-      }
-  
-      .grey {
-        background-color: #BDBDBD;
-      }
-    
-      .blue {
-        background-color: #2F80E9;
-      }
-    
-      .green {
-        background-color: #27AE60;
-      }
-    
-      .red {
-        background-color: #EB5757;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 5px;
+        height: 100%;
+        border-radius: 0 4px 4px 0;
       }
     }
   }
-  
-  .birthday-users-list {
-    list-style: none;
-    background-color: #fff;
-    width: 210px;
-    height: 100%;
-    border-radius: 6px;
-    padding: 15px;
-    line-height: 1.5;
-    font-weight: regular;
-    filter: drop-shadow(0px 8px 16px rgba(0, 0, 0, 0.08));
 
-    .user-item {
+  .legend-label {
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  .note {
+    display: flex;
+    font-size: 14px;
+    padding-left: 0;
+    margin-top: -10px;
+
+    .note-item {
       display: flex;
+      height: 20px;
       align-items: center;
+      margin-right: 20px;
 
-      .day-of-birth {
-        width: 14px;
-        font-size: 15px;
-        color: #BDBDBD;
-        margin-right: 15px;
-      }
-
-      .user-name {
-        font-size: 18px;
+      .color-temp {
+        width: 8px;
+        height: 8px;
+        border-radius: 2px;
+        margin-right: 5px;
       }
     }
   }
+}
+
+.grey {
+  background-color: #BDBDBD;
+}
+
+.blue {
+  background-color: #2F80E9;
+}
+
+.purple {
+  background-color: #8D6BA2;
+}
+
+.red {
+  background-color: #EB5757;
 }

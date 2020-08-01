@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
+import BirthdayUsersList from "./BirthdayUsersList";
 
-function MonthsList({ months, mouseEnterHandler, mouseLeaveHandler, users }) {
+function MonthsList({ months, users }) {
+  const [birthdayUsers, setBirthdayUsers] = useState([]);
+
   const colorPicker = (key) => {
     const birthdayUsers = users.filter((user) => user.dob.slice(5, 7) === key)
       .length;
@@ -9,10 +12,17 @@ function MonthsList({ months, mouseEnterHandler, mouseLeaveHandler, users }) {
     } else if (birthdayUsers > 2 && birthdayUsers < 7) {
       return "blue";
     } else if (birthdayUsers > 6 && birthdayUsers < 11) {
-      return "green";
+      return "purple";
     } else {
       return "red";
     }
+  };
+
+  const mouseEnterHandler = (e) => {
+    const birthdayUsers = users.filter(
+      (user) => +user.dob.slice(5, 7) === e.target.value
+    );
+    setBirthdayUsers(birthdayUsers);
   };
 
   return (
@@ -23,10 +33,11 @@ function MonthsList({ months, mouseEnterHandler, mouseLeaveHandler, users }) {
           value={month.key}
           key={month.key}
           onMouseEnter={mouseEnterHandler}
-          onMouseLeave={mouseLeaveHandler}
+          onClick={mouseEnterHandler}
         >
           {month.name}
-          <div className={`color-marker  ${colorPicker(month.key)}`}></div>
+          <li className={`color-marker  ${colorPicker(month.key)}`} value={month.key} />
+          <BirthdayUsersList birthdayUsers={birthdayUsers} />
         </li>
       ))}
     </ul>
