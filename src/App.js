@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../src/scss/App.scss";
 import { months } from "./months-list";
 import MonthsList from "./components/MonthsList.jsx";
-import Note from "./components/Note";
+import Legend from "./components/Legend";
 
 function App() {
   const [users, setUsers] = useState([]);
@@ -23,7 +23,7 @@ function App() {
   return (
     <div className="app">
       <MonthsList months={months} users={users} />
-      <Note />
+      <Legend />
     </div>
   );
 }
